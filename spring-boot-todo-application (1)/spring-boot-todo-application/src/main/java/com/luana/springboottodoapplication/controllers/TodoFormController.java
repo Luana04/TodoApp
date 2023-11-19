@@ -29,6 +29,11 @@ public class TodoFormController {
         return "redirect:/";
     }
 
+    @GetMapping("/create-todo")
+    public String showCreateForm(TodoItem todoItem) {
+        return "add-todo-item";
+    }
+
     @GetMapping("/done/{id}")
     public String markAsComplete(@PathVariable("id") long id, Model model) {
         TodoItem todoItem = todoItemRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Todo item nor found"));
